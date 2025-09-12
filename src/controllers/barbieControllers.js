@@ -73,7 +73,7 @@ barbies.splice(0, barbies.length, ...barbiesFiltradas);
 
 res.status(200).json ({
     success: true,
-    message: "O bruxo foi removido com sucesso",
+    message: "A barbie foi removida com sucesso",
     barbieRemovida: barbieParaRemover
 })
 }
