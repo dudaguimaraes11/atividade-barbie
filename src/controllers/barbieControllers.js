@@ -21,7 +21,7 @@ const getBarbieById = (req, res) => {
 }
 
 const createBarbie = (req, res) => {
-    const {id, nome, profissao, anoLancamento} = req.body; 
+    const {nome, profissao, anoLancamento} = req.body; 
 
     // Se eu quiser fazer validações do tipo, casa obrigatório ou qualquer outro. 
 
