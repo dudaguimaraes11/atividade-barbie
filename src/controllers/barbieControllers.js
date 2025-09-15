@@ -78,4 +78,56 @@ res.status(200).json ({
 })
 };
 
-export {getAllBarbies, getBarbieById, createBarbie, deleteBarbie};
+const updateBarbie = (req, res) => {
+    // Toda a minha lógica para atualizar uma barbie específica
+    const id = parseInt(req.params.id); 
+    //Body para pegar os dados novos
+    const {nome, profissao, anoLancamento} = req.body; 
+
+    const idParaEditar = id; 
+
+    //Verificar se o Id é válido
+    if (isNaN(idParaEditar)) {
+        return res.status(400).json ({
+            success: false, 
+            message: "O id deve ser um número válido!"
+        })
+    }
+
+    // Verificar se a barbie/id que eu estou buscando existe!
+    const barbieExiste = barbies.find(barbie => barbie.id === idParaEditar); 
+
+    if (!barbieExiste) {
+        return res.status(404).json ({
+            success: false, 
+            message: `Barbie com Id: ${id} não existe.`
+        })
+    }
+
+    // Após passar todos os cenários, eu atualizo a barbie. 
+    // Laço é o map
+
+    // Atualizar bruxo usando map
+    const barbiesAtualizadas = barbies.map(barbie => 
+        barbie.id === idParaEditar 
+            ? { 
+                ...barbie, 
+                ...(nome && { nome }),
+                ...(profissao && { profissao }),
+                ...(anoLancamento && { anoLancamento: parseInt(anoLancamento) }),
+              }
+            : barbie);
+
+            // Atualizado o array com o splice 
+            barbies.splice(0, barbies.length, ...barbiesAtualizadas); 
+            
+            const barbieNova = barbies.find(barbie => barbie.id === idParaEditar); 
+
+            res.status(200).json({
+                success: true, 
+                message: `Dados da Barbie ID ${idParaEditar} atualizados con sucesso!`, 
+                barbie: barbieNova
+            })
+}; 
+
+export {getAllBarbies, getBarbieById, createBarbie, deleteBarbie, updateBarbie};
