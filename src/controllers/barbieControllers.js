@@ -7,7 +7,7 @@ const getAllBarbies = (req, res) => {
         total: barbies.length,
         barbies: resultado
     })
-}
+};
 
 const getBarbieById = (req, res) => {
     let id = parseInt(req.params.id); 
@@ -18,7 +18,7 @@ const getBarbieById = (req, res) => {
         success:true, 
         barbie: barbie
     })
-}
+};
 
 const createBarbie = (req, res) => {
     const {nome, profissao, anoLancamento} = req.body; 
@@ -49,7 +49,7 @@ const createBarbie = (req, res) => {
         message: "Barbie cadastrada com sucesso!",
         barbie: novaBarbie
     })
-}
+};
 
 //NEW
 //Deletar um bruxo
@@ -76,6 +76,6 @@ res.status(200).json ({
     message: "A barbie foi removida com sucesso",
     barbieRemovida: barbieParaRemover
 })
-}
+};
 
 export {getAllBarbies, getBarbieById, createBarbie, deleteBarbie};
