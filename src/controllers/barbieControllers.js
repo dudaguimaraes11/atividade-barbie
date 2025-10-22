@@ -32,7 +32,7 @@ const createBarbie = (req, res) => {
         });
     }
 
-    // Depois que validar, posso criar o meu bruxo usando uma const, e adicionar dentro do array.
+    // Depois que validar, posso criar a minha barbie usando uma const, e adicionar dentro do array.
 
     const novaBarbie = {
         id:  barbies.length + 1,
@@ -52,7 +52,7 @@ const createBarbie = (req, res) => {
 };
 
 //NEW
-//Deletar um bruxo
+//Deletar uma barbie
 
 const deleteBarbie = (req, res) => {
     let id = parseInt(req.params.id);
@@ -107,7 +107,7 @@ const updateBarbie = (req, res) => {
     // Após passar todos os cenários, eu atualizo a barbie. 
     // Laço é o map
 
-    // Atualizar bruxo usando map
+    // Atualizar barbie usando map
     const barbiesAtualizadas = barbies.map(barbie => 
         barbie.id === idParaEditar 
             ? { 
